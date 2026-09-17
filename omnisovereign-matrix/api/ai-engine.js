@@ -1,12 +1,16 @@
 export default async function handler(req, res) {
-    // 1. केवल POST रिक्वेस्ट को अनुमति दें (सिक्योरिटी के लिए)
+    // 1. CORS & Method Security (केवल सुरक्षित POST रिक्वेस्ट अलाउ करें)
     if (req.method !== 'POST') {
-        return res.status(405).json({ error: 'Method not allowed. Use POST.' });
+        return res.status(405).json({ success: false, error: 'Method not allowed. Use POST.' });
     }
 
-    const { prompt, language = 'en' } = req.body;
+    const { prompt, mode, language = 'en' } = req.body;
 
-    // 2. Vercel Environment Variables से तुम्हारी 5 API Keys उठाना
+    if (!prompt) {
+        return res.status(400).json({ success: false, error: 'Prompt is required.' });
+    }
+
+    // 2. Load API Keys from Vercel Environment Variables
     const keys = {
         groq: process.env.GROQ_API_KEY,
         gemini: process.env.GEMINI_API_KEY,
@@ -15,11 +19,22 @@ export default async function handler(req, res) {
         huggingface: process.env.HUGGINGFACE_API_KEY
     };
 
-    const systemPrompt = `You are OmniSovereign Neural Matrix, a god-level AI audio and script assistant. Provide highly professional, accurate, and premium results in the requested language: ${language}.`;
+    // 3. Dynamic System Prompts (The "God-Level" Logic)
+    let systemInstruction = "";
+    
+    if (mode === "Sales Copy & Script") {
+        systemInstruction = `You are a legendary neuro-marketing copywriter and YouTube scriptwriter. Your goal is to write high-converting, psychologically engaging, and viral content. Use hooks, emotional triggers, and strong CTAs. You MUST generate the entire output strictly in this language code: ${language}.`;
+    } else if (mode === "God-Mode Prompt") {
+        systemInstruction = `You are a Master Prompt Engineer. The user will give you a basic idea. Your job is to reverse-engineer it and create an incredibly detailed, "God-Mode" prompt that the user can copy-paste into ChatGPT or Claude. Include context, role, constraints, formatting, and tone. You MUST write the explanation and the prompt strictly in this language code: ${language}.`;
+    } else if (mode === "SEO Blog") {
+        systemInstruction = `You are an elite Programmatic SEO Expert. Write a comprehensive, highly-ranked SEO blog post based on the user's input. Include a catchy H1, multiple H2s, bullet points, keyword-rich paragraphs, and a compelling conclusion. You MUST write the entire blog strictly in this language code: ${language}.`;
+    } else {
+        systemInstruction = `You are OmniSovereign Neural Matrix, a highly advanced AI. Provide professional, accurate, and premium results. Output language strictly: ${language}.`;
+    }
 
-    // 3. The 5-Node Fallback Engine (एक फेल होगा तो दूसरा ऑटोमैटिक चलेगा)
+    // 4. The 5-Node Redundant Architecture (Zero-Downtime Loop)
     const aiNodes = [
-        // Node 1: GROQ (Fastest - Llama 3)
+        // Node 1: GROQ (Llama-3 - Lightning Fast)
         async () => {
             if (!keys.groq) throw new Error("Groq key missing");
             const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
@@ -27,30 +42,36 @@ export default async function handler(req, res) {
                 headers: { 'Authorization': `Bearer ${keys.groq}`, 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     model: "llama3-70b-8192",
-                    messages: [{ role: "system", content: systemPrompt }, { role: "user", content: prompt }]
+                    messages: [
+                        { role: "system", content: systemInstruction },
+                        { role: "user", content: prompt }
+                    ],
+                    temperature: 0.7
                 })
             });
             const data = await response.json();
-            if (!data.choices) throw new Error("Groq Failed");
-            return { text: data.choices[0].message.content, engine: "Groq (Node 1)" };
+            if (!data.choices || !data.choices[0]) throw new Error("Groq API Failed");
+            return data.choices[0].message.content;
         },
 
-        // Node 2: GEMINI (Google's Powerhouse)
+        // Node 2: GEMINI (Google's Powerhouse - High Context)
         async () => {
             if (!keys.gemini) throw new Error("Gemini key missing");
             const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${keys.gemini}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    contents: [{ parts: [{ text: `${systemPrompt}\n\nUser Request: ${prompt}` }] }]
+                    contents: [
+                        { parts: [{ text: `${systemInstruction}\n\nUser Request: ${prompt}` }] }
+                    ]
                 })
             });
             const data = await response.json();
-            if (!data.candidates) throw new Error("Gemini Failed");
-            return { text: data.candidates[0].content.parts[0].text, engine: "Gemini (Node 2)" };
+            if (!data.candidates || !data.candidates[0]) throw new Error("Gemini API Failed");
+            return data.candidates[0].content.parts[0].text;
         },
 
-        // Node 3: OPENROUTER (Dynamic Router)
+        // Node 3: OPENROUTER (Dynamic Mistral/Claude Routing)
         async () => {
             if (!keys.openrouter) throw new Error("OpenRouter key missing");
             const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
@@ -58,74 +79,85 @@ export default async function handler(req, res) {
                 headers: { 'Authorization': `Bearer ${keys.openrouter}`, 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     model: "mistralai/mixtral-8x7b-instruct",
-                    messages: [{ role: "system", content: systemPrompt }, { role: "user", content: prompt }]
+                    messages: [
+                        { role: "system", content: systemInstruction },
+                        { role: "user", content: prompt }
+                    ]
                 })
             });
             const data = await response.json();
-            if (!data.choices) throw new Error("OpenRouter Failed");
-            return { text: data.choices[0].message.content, engine: "OpenRouter (Node 3)" };
+            if (!data.choices || !data.choices[0]) throw new Error("OpenRouter API Failed");
+            return data.choices[0].message.content;
         },
 
-        // Node 4: COHERE (Enterprise NLP)
+        // Node 4: COHERE (Enterprise NLP & Structuring)
         async () => {
             if (!keys.cohere) throw new Error("Cohere key missing");
-            const response = await fetch('https://api.cohere.ai/v1/generate', {
+            const response = await fetch('https://api.cohere.com/v1/chat', {
                 method: 'POST',
-                headers: { 'Authorization': `Bearer ${keys.cohere}`, 'Content-Type': 'application/json' },
+                headers: { 
+                    'Authorization': `Bearer ${keys.cohere}`, 
+                    'Content-Type': 'application/json',
+                    'accept': 'application/json'
+                },
                 body: JSON.stringify({
                     model: "command",
-                    prompt: `${systemPrompt}\n\nUser Request: ${prompt}\n\nResponse:`,
-                    max_tokens: 500
+                    message: prompt,
+                    preamble: systemInstruction
                 })
             });
             const data = await response.json();
-            if (!data.generations) throw new Error("Cohere Failed");
-            return { text: data.generations[0].text, engine: "Cohere (Node 4)" };
+            if (!data.text) throw new Error("Cohere API Failed");
+            return data.text;
         },
 
-        // Node 5: HUGGING FACE (Open Source Fallback)
+        // Node 5: HUGGING FACE (Open Source Ultimate Fallback)
         async () => {
             if (!keys.huggingface) throw new Error("Hugging Face key missing");
-            const response = await fetch('https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.2', {
+            const response = await fetch('https://api-inference.huggingface.co/models/mistralai/Mixtral-8x7B-Instruct-v0.1', {
                 method: 'POST',
                 headers: { 'Authorization': `Bearer ${keys.huggingface}`, 'Content-Type': 'application/json' },
-                body: JSON.stringify({ inputs: `${systemPrompt}\n\nUser: ${prompt}\n\nMatrix:` })
+                body: JSON.stringify({ 
+                    inputs: `<s>[INST] ${systemInstruction} \n\n User Request: ${prompt} [/INST]`,
+                    parameters: { max_new_tokens: 1000 }
+                })
             });
             const data = await response.json();
-            if (data.error) throw new Error("Hugging Face Failed");
-            return { text: data[0].generated_text.replace(`${systemPrompt}\n\nUser: ${prompt}\n\nMatrix:`, ''), engine: "Hugging Face (Node 5)" };
+            if (data.error || !data[0]) throw new Error("Hugging Face API Failed");
+            return data[0].generated_text.split('[/INST]')[1].trim(); // Extract only the generated response
         }
     ];
 
-    // 4. The Bulletproof Execution Loop (बिना रुके काम करेगा)
+    // 5. The Bulletproof Execution Matrix
     let finalResult = null;
-    let fallbackLog = [];
+    let fallbackLogs = [];
 
-    for (const node of aiNodes) {
+    // Loop through the AI nodes sequentially until one succeeds
+    for (let i = 0; i < aiNodes.length; i++) {
         try {
-            finalResult = await node();
-            if (finalResult && finalResult.text) {
-                break; // जैसे ही कोई इंजन सही जवाब देगा, लूप वहीं रुक जाएगा और जवाब दे देगा!
+            const resultText = await aiNodes[i]();
+            if (resultText && resultText.trim().length > 0) {
+                finalResult = resultText;
+                break; // 🚀 Success! Exit the fallback loop.
             }
         } catch (error) {
-            fallbackLog.push(error.message);
-            continue; // अगर फेल हुआ, तो बिना क्रैश हुए अगले इंजन पर चला जाएगा
+            fallbackLogs.push(`Node ${i + 1} Failed: ${error.message}`);
+            continue; // 🛡️ Seamlessly fallback to the next AI engine
         }
     }
 
-    // 5. फ्रंटएंड को फाइनल रिस्पांस भेजना
+    // 6. Return the Matrix Output to the Frontend
     if (finalResult) {
         return res.status(200).json({ 
             success: true, 
-            data: finalResult.text, 
-            activeEngine: finalResult.engine 
+            data: finalResult
         });
     } else {
-        // अगर चमत्कारिक रूप से पांचों फेल हो जाएं (जो कि असंभव है)
+        // This block only executes if ALL 5 God-Level AIs go down simultaneously (virtually impossible)
         return res.status(500).json({ 
             success: false, 
-            error: "All 5 Neural Nodes Failed. Vercel Matrix Overloaded.",
-            log: fallbackLog
+            error: "All 5 Neural Nodes Failed. Please check API Keys in Vercel.",
+            logs: fallbackLogs
         });
     }
 }

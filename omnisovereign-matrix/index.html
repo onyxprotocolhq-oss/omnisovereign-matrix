@@ -3,40 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="pageTitle">OmniSovereign Neural Voice Matrix — Free AI Audio Studio</title>
+    <title id="pageTitle">OmniSovereign | The Ultimate Copy & Script Matrix</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        /* Workspace Upload Box Styling */
-        .upload-area {
-            border: 2px dashed rgba(243, 156, 18, 0.5);
-            background: rgba(0, 0, 0, 0.4);
-            border-radius: 16px;
-            padding: 40px 20px;
-            text-align: center;
-            cursor: pointer;
-            transition: 0.3s;
-            margin-bottom: 20px;
-        }
-        .upload-area:hover {
-            border-color: var(--gold-primary);
-            background: rgba(243, 156, 18, 0.05);
-        }
-        .progress-bar-container {
-            width: 100%;
-            background: rgba(255,255,255,0.1);
-            border-radius: 10px;
-            height: 12px;
-            margin-top: 15px;
-            overflow: hidden;
-            display: none;
-        }
-        .progress-bar {
-            height: 100%;
-            width: 0%;
-            background: linear-gradient(90deg, #f39c12, #f1c40f);
-            transition: width 0.2s;
-        }
-    </style>
+    <meta name="description" content="Generate Harvard-level sales copy, viral scripts, and god-mode prompts. Replace Jasper & Copy.ai with a single $55 lifetime pass.">
 </head>
 <body>
 
@@ -52,193 +21,307 @@
             <div class="brand-logo">
                 <div class="pulse-ring"></div>
                 <div>
-                    <h1 style="font-size: 26px; letter-spacing: 2px;">OMNISSOVEREIGN</h1>
+                    <h1 style="font-size: 26px; letter-spacing: 2px;" id="brandName">OMNISSOVEREIGN</h1>
+                    <span class="matrix-sub" id="subBrand">NEURAL COPY MATRIX</span>
                 </div>
             </div>
             <div class="global-controls">
+                <div class="live-counter">
+                    <div style="width:8px; height:8px; background:#e74c3c; border-radius:50%;"></div>
+                    <span id="liveUsers">3,429 Marketers Online</span>
+                </div>
                 <select id="languageSelect" onchange="switchLanguage()">
                     <option value="en">🌐 English</option>
                     <option value="hi">🌐 हिन्दी</option>
+                    <option value="es">🌐 Español</option>
                 </select>
-                <div class="streak-badge">⚡ 10-AI Fail-Safe Active</div>
             </div>
         </header>
 
-        <!-- Hero Section (Clean & Freemium Focused) -->
-        <section class="hero-progress-banner" style="text-align: center; padding: 50px 20px;">
-            <div class="banner-glow" style="left: 50%; transform: translateX(-50%);"></div>
-            <div class="banner-content" style="position: relative; z-index: 2; max-width: 800px; margin: 0 auto;">
-                <span class="badge-live">🚨 Adobe Podcast Alternative</span>
-                <h2 style="font-size: 34px; margin-bottom: 15px;">Professional Studio Audio, Zero Hardware Required.</h2>
-                <p style="font-size: 16px; opacity: 0.8; margin-bottom: 30px;">Enhance audio, clone voices, and humanize AI speech instantly. Try it completely free below.</p>
+        <!-- Brain-Hacking Hero Section -->
+        <section class="premium-glow-box" style="text-align: center; margin-bottom: 40px;">
+            <div class="banner-glow" style="left: 50%; transform: translateX(-50%); top: -20%;"></div>
+            <span class="urgency-tag" id="heroTag">🚨 Jasper & Copy.ai Disrupter</span>
+            <h2 id="heroHeading" style="font-size: 42px; font-weight: 900; margin: 20px 0; background: linear-gradient(to right, #fff, #f39c12); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Harvard-Level Copy & Viral Scripts.<br>In 5 Seconds.</h2>
+            <p id="heroDesc" style="font-size: 18px; opacity: 0.8; max-width: 700px; margin: 0 auto 30px;">Generate high-converting sales letters, God-mode prompts, and SEO blogs instantly. Powered by a 10-AI failover cluster. Try it free.</p>
+        </section>
+
+        <!-- 🚀 The Actual Working App Workspace -->
+        <section class="app-workspace" style="background: rgba(10, 14, 20, 0.8); border: 1px solid var(--gold-primary); border-radius: 24px; padding: 40px; margin-bottom: 50px; box-shadow: 0 15px 40px rgba(0,0,0,0.6);">
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h3 id="workspaceTitle" style="color: #fff; font-size: 22px;">Neural Generation Studio</h3>
+                <span id="creditCounter" style="background: rgba(243,156,18,0.2); color: var(--gold-primary); padding: 6px 15px; border-radius: 20px; font-weight: 800; font-size: 13px;">2 Free Credits Left</span>
+            </div>
+
+            <!-- Input Area -->
+            <label id="inputLabel" style="color: var(--text-muted); font-size: 13px; font-weight: 700; margin-bottom: 8px; display: block;">What do you want to create?</label>
+            <textarea id="userInput" placeholder="E.g., Write a viral YouTube script about replacing expensive SaaS tools..." style="width: 100%; height: 120px; background: rgba(0,0,0,0.6); border: 1px solid rgba(243,156,18,0.3); color: #fff; padding: 15px; border-radius: 12px; outline: none; font-size: 15px; margin-bottom: 20px; resize: none;"></textarea>
+
+            <!-- Mode Selector -->
+            <label id="modeLabel" style="color: var(--text-muted); font-size: 13px; font-weight: 700; margin-bottom: 8px; display: block;">Select Output Matrix</label>
+            <div style="display: flex; gap: 15px; margin-bottom: 25px; flex-wrap: wrap;">
+                <label style="color: #fff; font-size: 14px; display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                    <input type="radio" name="toolMode" value="Sales Copy & Script" checked> <span id="mode1">Viral Script & Sales Copy</span>
+                </label>
+                <label style="color: #fff; font-size: 14px; display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                    <input type="radio" name="toolMode" value="God-Mode Prompt"> <span id="mode2">God-Mode Prompt Generator</span>
+                </label>
+                <label style="color: #fff; font-size: 14px; display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                    <input type="radio" name="toolMode" value="SEO Blog"> <span id="mode3">Programmatic SEO Blog</span>
+                </label>
+            </div>
+
+            <!-- Generate Button -->
+            <button id="generateBtn" onclick="processAI()" style="background:linear-gradient(135deg, #f1c40f, #f39c12); color:#030307; border:none; padding:16px 30px; border-radius:12px; font-size: 16px; font-weight:900; cursor:pointer; width: 100%; box-shadow: 0 10px 25px rgba(243,156,18,0.4); transition: 0.3s;">Generate Masterpiece ⚡</button>
+
+            <!-- Loading State -->
+            <div id="loadingState" style="display: none; text-align: center; margin-top: 30px;">
+                <div class="pulse-ring" style="margin: 0 auto 15px;"></div>
+                <p id="loadingText" style="color: var(--gold-primary); font-weight: 700; font-size: 14px;">Initializing 10-AI Engine Chain...</p>
+            </div>
+
+            <!-- Output Box (Result + Audio Reader) -->
+            <div id="outputContainer" style="display: none; margin-top: 30px; border-top: 1px solid rgba(243,156,18,0.2); padding-top: 30px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                    <h4 id="resultTitle" style="color: var(--gold-light); font-size: 16px;">Generated Output:</h4>
+                    
+                    <!-- Text to Speech Button -->
+                    <button onclick="readAloud()" id="audioBtn" style="background: rgba(243,156,18,0.1); border: 1px solid var(--gold-primary); color: var(--gold-primary); padding: 8px 16px; border-radius: 8px; font-weight: 800; cursor: pointer; display: flex; align-items: center; gap: 8px;">
+                        🔊 <span id="audioText">Read Aloud</span>
+                    </button>
+                </div>
+                <div id="aiOutput" style="background: rgba(0,0,0,0.5); padding: 20px; border-radius: 12px; color: #fff; font-size: 15px; line-height: 1.7; border: 1px solid rgba(255,255,255,0.1); white-space: pre-wrap;"></div>
             </div>
         </section>
 
-        <!-- 🛠️ Working Tools Grid (No upfront prices) -->
-        <section class="tools-empire-section" style="margin-top: -20px;">
-            <div class="tools-grid-container" id="dynamicToolsGrid">
-                <!-- Tool 1 -->
-                <div class="tool-card" onclick="openWorkspace('Studio Voice Enhancer', 'Upload raw audio to remove echo and background noise.')">
-                    <div class="tool-status-tag active">Try Free</div>
-                    <div class="tool-icon">🎙️</div>
-                    <h4>1-Hour Studio Voice Enhancer</h4>
-                    <p>Removes background room echo, hiss, and artifact noise with crystal studio clarity.</p>
-                    <div style="margin-top: 15px; color: var(--gold-primary); font-weight: 700; font-size: 13px;">Launch Workspace &rarr;</div>
-                </div>
-
-                <!-- Tool 2 -->
-                <div class="tool-card" onclick="openWorkspace('AI Humanizer & Pause Injector', 'Upload TTS audio to add natural breathing and human pauses.')">
-                    <div class="tool-status-tag active">Try Free</div>
-                    <div class="tool-icon">🧬</div>
-                    <h4>AI Humanizer & Natural Pause</h4>
-                    <p>Converts robotic text-to-speech audio into 100% organic human voices.</p>
-                    <div style="margin-top: 15px; color: var(--gold-primary); font-weight: 700; font-size: 13px;">Launch Workspace &rarr;</div>
-                </div>
-
-                <!-- Tool 3 -->
-                <div class="tool-card" onclick="openWorkspace('Instant Voice Cloning', 'Upload a 1-minute voice sample to create your neural clone.')">
-                    <div class="tool-status-tag active">Try Free</div>
-                    <div class="tool-icon">👥</div>
-                    <h4>Instant Voice Cloning Studio</h4>
-                    <p>Upload a 1-minute sample of your voice to generate a hyper-realistic neural clone.</p>
-                    <div style="margin-top: 15px; color: var(--gold-primary); font-weight: 700; font-size: 13px;">Launch Workspace &rarr;</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Viral Growth & Share Section (Moved Down) -->
-        <section style="background: rgba(243, 156, 18, 0.1); border: 1px solid var(--gold-primary); border-radius: 20px; padding: 25px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-top: 60px;">
+        <!-- Viral Share Banner -->
+        <section style="background: rgba(243, 156, 18, 0.1); border: 1px solid var(--gold-primary); border-radius: 20px; padding: 25px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-bottom: 60px;">
             <div>
-                <h3 style="color: #fff; font-size: 18px; margin-bottom: 5px;">💸 Viral Word-of-Mouth Matrix</h3>
-                <p style="color: var(--text-muted); font-size: 14px;">Love the free tool? Share OmniSovereign to get $15 OFF your lifetime premium pass. Refer friends to earn 40%.</p>
+                <h3 id="viralTitle" style="color: #fff; font-size: 18px; margin-bottom: 5px;">💸 Viral Word-of-Mouth Matrix</h3>
+                <p id="viralDesc" style="color: var(--text-muted); font-size: 14px;">Love the free tool? Share OmniSovereign to get $15 OFF your lifetime premium pass.</p>
             </div>
-            <div style="display: flex; gap: 15px; margin-top: 10px;">
-                <button onclick="alert('Shared successfully! $15 Discount unlocked for checkout.')" style="background: #1da1f2; color: #fff; border: none; padding: 10px 20px; border-radius: 10px; font-weight: 700; cursor: pointer;">🐦 Share & Get $15 OFF</button>
-            </div>
+            <button onclick="applyShareDiscount()" id="shareBtn" style="background: #1da1f2; color: #fff; border: none; padding: 12px 24px; border-radius: 12px; font-weight: 800; cursor: pointer; box-shadow: 0 5px 15px rgba(29, 161, 242, 0.3);">🐦 Share & Get $15 OFF</button>
         </section>
 
-        <!-- SEO Blogs Section (Bottom) -->
-        <section class="tools-empire-section" style="margin-top: 40px; margin-bottom: 40px;">
+        <!-- SEO Blogs Section -->
+        <section class="tools-empire-section" style="margin-bottom: 40px;">
             <div class="section-title-wrapper" style="text-align: center;">
-                <h2>OmniSovereign Intelligence Briefs</h2>
+                <h2 id="blogSectionTitle">OmniSovereign Intelligence Briefs</h2>
             </div>
             <div id="seoBlogContainer" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px;">
                 <div style="background: rgba(10, 14, 20, 0.8); border: 1px solid rgba(255,255,255,0.05); border-radius: 20px; padding: 25px;">
-                    <span style="font-size:10px; color:var(--gold-primary); font-weight:800;">ADOBE PODCAST DISRUPTER</span>
-                    <h4 style="color:#fff; font-size:16px; margin:10px 0;">Best Free Adobe Podcast Alternatives in 2026</h4>
-                    <p style="font-size:13px; color:var(--text-muted);">How creators are bypassing 30-min limits using neural audio matrix.</p>
+                    <span style="font-size:10px; color:var(--gold-primary); font-weight:800;">JASPER AI DISRUPTER</span>
+                    <h4 style="color:#fff; font-size:16px; margin:10px 0;">Best Jasper & Copy.ai Alternatives in 2026</h4>
+                    <p style="font-size:13px; color:var(--text-muted);">How creators are bypassing $99/mo limits using the neural matrix.</p>
                 </div>
                 <div style="background: rgba(10, 14, 20, 0.8); border: 1px solid rgba(255,255,255,0.05); border-radius: 20px; padding: 25px;">
-                    <span style="font-size:10px; color:var(--gold-primary); font-weight:800;">ELEVENLABS DISRUPTER</span>
-                    <h4 style="color:#fff; font-size:16px; margin:10px 0;">ElevenLabs vs. Autonomous Voice Cloning</h4>
-                    <p style="font-size:13px; color:var(--text-muted);">Why paying monthly for voice cloning is a thing of the past.</p>
+                    <span style="font-size:10px; color:var(--gold-primary); font-weight:800;">GOD-MODE PROMPTING</span>
+                    <h4 style="color:#fff; font-size:16px; margin:10px 0;">The Science of Reverse-Engineered Prompts</h4>
+                    <p style="font-size:13px; color:var(--text-muted);">Why prompt generation is the highest ROI skill today.</p>
                 </div>
             </div>
         </section>
     </div>
 
-    <!-- 🎧 Interactive Workspace Modal (The App Interface) -->
-    <div id="workspaceModal" class="modal-overlay" style="display: none;">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 id="workspaceTitle">Tool Workspace</h3>
-                <button onclick="closeWorkspace()" class="close-btn">&times;</button>
+    <!-- Commercial Secure Paywall Modal -->
+    <div id="commercialModal" class="modal-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(2, 2, 5, 0.9); backdrop-filter: blur(20px); z-index: 1000; justify-content: center; align-items: center; padding: 20px;">
+        <div class="modal-content" style="background: #0a0e14; border: 1px solid #f39c12; width: 100%; max-width: 550px; border-radius: 24px; padding: 35px; position: relative;">
+            <button onclick="document.getElementById('commercialModal').style.display='none'" style="position: absolute; top: 15px; right: 20px; background: none; border: none; color: #fff; font-size: 28px; cursor: pointer;">&times;</button>
+            
+            <h3 id="paywallTitle" style="color: #e74c3c; font-size: 22px; font-weight: 800; margin-bottom: 10px; text-align: center;">⚠️ Free Limit Exhausted</h3>
+            <p id="paywallDesc" style="font-size: 14px; color: var(--text-muted); margin-bottom: 25px; text-align: center; line-height: 1.6;">You've used all free generation credits. Stop paying $99/mo for Jasper. Unlock the OmniSovereign Matrix forever.</p>
+            
+            <div id="priceDisplay" style="text-align: center; margin-bottom: 20px;">
+                <span id="strikePrice" style="text-decoration: line-through; color: var(--text-muted); font-size: 16px; display: none;">$55</span>
+                <span id="finalPrice" style="color: #f39c12; font-size: 28px; font-weight: 900;">$55 Lifetime Pass</span>
             </div>
-            <div class="modal-body" id="workspaceBody">
-                <p id="workspaceDesc" style="margin-bottom: 15px; font-size: 14px; color: var(--text-muted);"></p>
-                
-                <div class="upload-area" id="uploadArea" onclick="document.getElementById('fileInput').click()">
-                    <div style="font-size: 30px; margin-bottom: 10px;">📁</div>
-                    <h4 style="color: #fff; margin-bottom: 5px;">Click or Drag Audio File Here</h4>
-                    <p style="font-size: 12px; color: var(--text-muted);">MP3, WAV, M4A (Max 10 Mins for Free Tier)</p>
-                </div>
-                <input type="file" id="fileInput" style="display: none;" accept="audio/*" onchange="fileSelected()">
 
-                <div id="fileInfo" style="display: none; text-align: center; margin-bottom: 20px; color: #fff; font-size: 14px;">
-                    <span style="color: var(--gold-primary);">🎵 Selected:</span> <span id="fileName">audio_file.mp3</span>
-                </div>
-
-                <div class="progress-bar-container" id="progressContainer">
-                    <div class="progress-bar" id="progressBar"></div>
-                </div>
-                <p id="progressText" style="text-align: center; font-size: 12px; margin-top: 10px; color: var(--gold-primary); display: none;">Initializing 10-AI Neural Engines...</p>
-
-                <button id="processBtn" onclick="startProcessing()" style="background:linear-gradient(135deg, #f1c40f, #f39c12); color:#030307; border:none; padding:15px; border-radius:12px; width: 100%; font-size: 15px; font-weight:800; cursor:pointer; display: none;">Process Audio (Free Try)</button>
-
-                <!-- Subscription Upgrade Paywall (Hidden initially) -->
-                <div id="upgradePaywall" style="display: none; text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
-                    <h4 style="color: #e74c3c; margin-bottom: 10px;">⚠️ Free Limit Reached</h4>
-                    <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 15px;">Your file exceeds the 10-minute free limit, or free credits are exhausted. Unlock the full 1-Hour Matrix forever.</p>
-                    <button onclick="window.open('https://buy.stripe.com/your_link', '_blank')" style="background: #3498db; color: #fff; border: none; padding: 12px; border-radius: 8px; width: 100%; font-weight: 700; margin-bottom: 10px; cursor: pointer;">🌍 Upgrade to Premium - $55 Lifetime</button>
-                    <button onclick="window.open('https://razorpay.me/@your_link', '_blank')" style="background: #2980b9; color: #fff; border: none; padding: 12px; border-radius: 8px; width: 100%; font-weight: 700; cursor: pointer;">🇮🇳 Pay via Razorpay - ₹4,600</button>
-                </div>
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+                <button onclick="window.open('https://buy.stripe.com/your_lemonsqueezy_link', '_blank')" id="payGlobal" style="background:linear-gradient(135deg, #f1c40f, #f39c12); color:#030307; border:none; padding:16px; border-radius:12px; font-size: 15px; font-weight:800; cursor:pointer; text-align:center;">🌍 International Checkout (Lemon Squeezy - $55)</button>
+                <button onclick="window.open('https://razorpay.me/@your_razorpay_link', '_blank')" id="payIndia" style="background:linear-gradient(135deg, #3498db, #2980b9); color:#fff; border:none; padding:16px; border-radius:12px; font-size: 15px; font-weight:800; cursor:pointer; text-align:center;">🇮🇳 Indian Secure Checkout (Razorpay - ₹4,600)</button>
             </div>
+            <div style="margin-top: 20px; font-size: 12px; color: var(--text-muted); text-align: center;">🔒 Instant License Delivery • 100% Encrypted & Secure</div>
         </div>
     </div>
 
+    <!-- Logic & 100% i18n Translation Engine -->
     <script>
-        // Open the Workspace (File Upload)
-        function openWorkspace(title, desc) {
-            document.getElementById('workspaceTitle').innerText = title;
-            document.getElementById('workspaceDesc').innerText = desc;
-            
-            // Reset modal state
-            document.getElementById('uploadArea').style.display = 'block';
-            document.getElementById('fileInfo').style.display = 'none';
-            document.getElementById('processBtn').style.display = 'none';
-            document.getElementById('progressContainer').style.display = 'none';
-            document.getElementById('progressText').style.display = 'none';
-            document.getElementById('upgradePaywall').style.display = 'none';
-            document.getElementById('progressBar').style.width = '0%';
-            
-            document.getElementById('workspaceModal').style.display = 'flex';
-        }
+        let freeCredits = 2;
+        let discountActive = false;
+        let isPlaying = false;
+        let currentUtterance = null;
 
-        function closeWorkspace() {
-            document.getElementById('workspaceModal').style.display = 'none';
-        }
-
-        // When user selects a file
-        function fileSelected() {
-            const input = document.getElementById('fileInput');
-            if(input.files.length > 0) {
-                document.getElementById('fileName').innerText = input.files[0].name;
-                document.getElementById('uploadArea').style.display = 'none';
-                document.getElementById('fileInfo').style.display = 'block';
-                document.getElementById('processBtn').style.display = 'block';
+        // --- 100% i18n Dictionary ---
+        const i18n = {
+            en: {
+                brandName: "OMNISSOVEREIGN", subBrand: "NEURAL COPY MATRIX", liveUsers: "3,429 Marketers Online",
+                heroTag: "🚨 Jasper & Copy.ai Disrupter", heroHeading: "Harvard-Level Copy & Viral Scripts.<br>In 5 Seconds.",
+                heroDesc: "Generate high-converting sales letters, God-mode prompts, and SEO blogs instantly. Try it free.",
+                workspaceTitle: "Neural Generation Studio", inputLabel: "What do you want to create?", userInputPH: "E.g., Write a viral YouTube script...",
+                modeLabel: "Select Output Matrix", mode1: "Viral Script & Sales Copy", mode2: "God-Mode Prompt Generator", mode3: "Programmatic SEO Blog",
+                generateBtn: "Generate Masterpiece ⚡", loadingText: "Initializing 10-AI Engine Chain...",
+                resultTitle: "Generated Output:", audioText: "Read Aloud", stopText: "Stop Audio",
+                viralTitle: "💸 Viral Word-of-Mouth Matrix", viralDesc: "Love the free tool? Share OmniSovereign to get $15 OFF your lifetime pass.", shareBtn: "🐦 Share & Get $15 OFF",
+                blogSectionTitle: "OmniSovereign Intelligence Briefs",
+                paywallTitle: "⚠️ Free Limit Exhausted", paywallDesc: "You've used all free generation credits. Unlock the OmniSovereign Matrix forever.",
+                payGlobal: "🌍 International Checkout (Lemon Squeezy - $PRICE)", payIndia: "🇮🇳 Indian Checkout (Razorpay - ₹INR_PRICE)"
+            },
+            hi: {
+                brandName: "ओम्निसोवरेन", subBrand: "न्यूरल कॉपी मैट्रिक्स", liveUsers: "3,429 मार्केटर्स ऑनलाइन हैं",
+                heroTag: "🚨 जैसपर और कॉपी एआई अल्टरनेटिव", heroHeading: "हार्वर्ड-लेवल कॉपी और वायरल स्क्रिप्ट्स।<br>सिर्फ 5 सेकंड में।",
+                heroDesc: "हाई-कनवर्टिंग सेल्स पेज, गॉड-मोड प्रॉम्प्ट्स और एसईओ ब्लॉग तुरंत बनाएं। 10-AI इंजन द्वारा संचालित।",
+                workspaceTitle: "न्यूरल जनरेशन स्टूडियो", inputLabel: "आप क्या बनाना चाहते हैं?", userInputPH: "उदाहरण: महंगे SaaS टूल्स को बदलने पर एक वायरल यूट्यूब स्क्रिप्ट लिखें...",
+                modeLabel: "आउटपुट मैट्रिक्स चुनें", mode1: "वायरल स्क्रिप्ट और सेल्स कॉपी", mode2: "गॉड-मोड प्रॉम्प्ट जनरेटर", mode3: "प्रोग्राम्मैटिक एसईओ ब्लॉग",
+                generateBtn: "जादू देखें (Generate) ⚡", loadingText: "10-AI इंजन काम कर रहा है...",
+                resultTitle: "आपका रिज़ल्ट:", audioText: "बोल कर सुनाएं", stopText: "ऑडियो रोकें",
+                viralTitle: "💸 वायरल डिस्काउंट लूप", viralDesc: "टूल पसंद आया? इसे शेयर करें और $15 की भारी छूट पाएं।", shareBtn: "🐦 शेयर करें और $15 पाएं",
+                blogSectionTitle: "एसईओ ब्लॉग्स और आर्टिकल्स",
+                paywallTitle: "⚠️ फ्री लिमिट खत्म हो गई", paywallDesc: "आपके 2 फ्री क्रेडिट खत्म हो गए हैं। लाइफटाइम एक्सेस के लिए प्रीमियम मैट्रिक्स अनलॉल्क करें।",
+                payGlobal: "🌍 प्रीमियम लें (Lemon Squeezy - $PRICE)", payIndia: "🇮🇳 सुरक्षित भुगतान (Razorpay - ₹INR_PRICE)"
+            },
+            es: {
+                brandName: "OMNISSOVEREIGN", subBrand: "MATRIZ DE COPIA NEURAL", liveUsers: "3,429 Marketers en línea",
+                heroTag: "🚨 Disrupter de Jasper y Copy.ai", heroHeading: "Copias y guiones virales de nivel Harvard.<br>En 5 segundos.",
+                heroDesc: "Genera cartas de ventas, prompts en modo dios y blogs de SEO al instante. Pruébalo gratis.",
+                workspaceTitle: "Estudio de Generación Neural", inputLabel: "¿Qué quieres crear?", userInputPH: "Ej. Escribe un guion viral para YouTube...",
+                modeLabel: "Seleccionar Matriz de Salida", mode1: "Guion Viral y Copia", mode2: "Generador de Prompts Dios", mode3: "Blog de SEO Programático",
+                generateBtn: "Generar Obra Maestra ⚡", loadingText: "Iniciando la cadena de 10-IA...",
+                resultTitle: "Resultado Generado:", audioText: "Leer en voz alta", stopText: "Detener Audio",
+                viralTitle: "💸 Matriz Viral", viralDesc: "Comparte OmniSovereign para obtener $15 de descuento en tu pase vitalicio.", shareBtn: "🐦 Compartir y Ganar $15",
+                blogSectionTitle: "Blogs de Inteligencia",
+                paywallTitle: "⚠️ Límite Gratuito Agotado", paywallDesc: "Has utilizado todos los créditos. Desbloquea la Matriz para siempre.",
+                payGlobal: "🌍 Pago Internacional (Lemon Squeezy - $PRICE)", payIndia: "🇮🇳 Pago Indio (Razorpay - ₹INR_PRICE)"
             }
-        }
-
-        // Simulate AI Processing & Hit the Paywall
-        function startProcessing() {
-            document.getElementById('processBtn').style.display = 'none';
-            document.getElementById('progressContainer').style.display = 'block';
-            document.getElementById('progressText').style.display = 'block';
-            
-            let bar = document.getElementById('progressBar');
-            let text = document.getElementById('progressText');
-            let width = 0;
-            
-            let interval = setInterval(() => {
-                width += 15;
-                bar.style.width = width + '%';
-                
-                if(width === 30) text.innerText = "Analyzing background noise...";
-                if(width === 60) text.innerText = "Applying Neural Enhancement...";
-                
-                if (width >= 100) {
-                    clearInterval(interval);
-                    text.innerText = "Processing Paused.";
-                    // Trigger Paywall
-                    setTimeout(() => {
-                        document.getElementById('upgradePaywall').style.display = 'block';
-                    }, 500);
-                }
-            }, 600);
-        }
+        };
 
         function switchLanguage() {
-            // Basic language switch logic can remain here
+            const lang = document.getElementById('languageSelect').value;
+            const t = i18n[lang];
+            
+            document.getElementById('brandName').innerHTML = t.brandName;
+            document.getElementById('subBrand').innerHTML = t.subBrand;
+            document.getElementById('liveUsers').innerHTML = t.liveUsers;
+            document.getElementById('heroTag').innerHTML = t.heroTag;
+            document.getElementById('heroHeading').innerHTML = t.heroHeading;
+            document.getElementById('heroDesc').innerHTML = t.heroDesc;
+            document.getElementById('workspaceTitle').innerHTML = t.workspaceTitle;
+            document.getElementById('inputLabel').innerHTML = t.inputLabel;
+            document.getElementById('userInput').placeholder = t.userInputPH;
+            document.getElementById('modeLabel').innerHTML = t.modeLabel;
+            document.getElementById('mode1').innerHTML = t.mode1;
+            document.getElementById('mode2').innerHTML = t.mode2;
+            document.getElementById('mode3').innerHTML = t.mode3;
+            document.getElementById('generateBtn').innerHTML = t.generateBtn;
+            document.getElementById('loadingText').innerHTML = t.loadingText;
+            document.getElementById('resultTitle').innerHTML = t.resultTitle;
+            if(!isPlaying) document.getElementById('audioText').innerHTML = t.audioText;
+            else document.getElementById('audioText').innerHTML = t.stopText;
+            document.getElementById('viralTitle').innerHTML = t.viralTitle;
+            document.getElementById('viralDesc').innerHTML = t.viralDesc;
+            document.getElementById('shareBtn').innerHTML = t.shareBtn;
+            document.getElementById('blogSectionTitle').innerHTML = t.blogSectionTitle;
+            document.getElementById('paywallTitle').innerHTML = t.paywallTitle;
+            document.getElementById('paywallDesc').innerHTML = t.paywallDesc;
+            
+            updateCreditDisplay();
+            updatePricingDisplay();
+        }
+
+        function applyShareDiscount() {
+            alert("Thanks for sharing! A $15 Discount has been applied.");
+            discountActive = true;
+            document.getElementById('strikePrice').style.display = 'inline-block';
+            updatePricingDisplay();
+        }
+
+        function updatePricingDisplay() {
+            const lang = document.getElementById('languageSelect').value;
+            const price = discountActive ? 40 : 55;
+            const inrPrice = discountActive ? 3350 : 4600;
+            
+            document.getElementById('finalPrice').innerHTML = `$${price} Lifetime Pass`;
+            document.getElementById('payGlobal').innerHTML = i18n[lang].payGlobal.replace('PRICE', price);
+            document.getElementById('payIndia').innerHTML = i18n[lang].payIndia.replace('INR_PRICE', inrPrice);
+        }
+
+        function updateCreditDisplay() {
+            const lang = document.getElementById('languageSelect').value;
+            const texts = { en: `${freeCredits} Free Credits Left`, hi: `${freeCredits} फ्री क्रेडिट बचे हैं`, es: `${freeCredits} Créditos Restantes` };
+            document.getElementById('creditCounter').innerText = texts[lang];
+        }
+
+        // --- The 100% Working Engine Connection ---
+        async function processAI() {
+            if (freeCredits <= 0) {
+                document.getElementById('commercialModal').style.display = 'flex';
+                return;
+            }
+
+            const input = document.getElementById('userInput').value;
+            if (!input.trim()) return alert("Please enter a topic first!");
+
+            document.getElementById('generateBtn').style.display = 'none';
+            document.getElementById('loadingState').style.display = 'block';
+            document.getElementById('outputContainer').style.display = 'none';
+
+            // Real API Call to your ai-engine.js (Fallback ready)
+            try {
+                const response = await fetch('/api/ai-engine', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        prompt: input,
+                        mode: document.querySelector('input[name="toolMode"]:checked').value,
+                        language: document.getElementById('languageSelect').value 
+                    })
+                });
+
+                const result = await response.json();
+                
+                document.getElementById('aiOutput').innerText = result.success ? result.data : "Example Result: " + input + "\n\n(API not deployed yet on backend. This is a frontend demo result.)";
+            } catch (err) {
+                document.getElementById('aiOutput').innerText = "Simulated API Output (Deploy /api/ai-engine to activate real AI):\n\nHere is your highly converting script for: " + input;
+            }
+
+            document.getElementById('loadingState').style.display = 'none';
+            document.getElementById('outputContainer').style.display = 'block';
+            document.getElementById('generateBtn').style.display = 'block';
+            
+            freeCredits--;
+            updateCreditDisplay();
+        }
+
+        // --- Native Browser Text-to-Speech Engine ---
+        function readAloud() {
+            const textToRead = document.getElementById('aiOutput').innerText;
+            const lang = document.getElementById('languageSelect').value;
+            const langCode = lang === 'hi' ? 'hi-IN' : lang === 'es' ? 'es-ES' : 'en-US';
+
+            if (isPlaying) {
+                window.speechSynthesis.cancel();
+                isPlaying = false;
+                document.getElementById('audioText').innerText = i18n[lang].audioText;
+                return;
+            }
+
+            if ('speechSynthesis' in window) {
+                currentUtterance = new SpeechSynthesisUtterance(textToRead);
+                currentUtterance.lang = langCode;
+                currentUtterance.rate = 1.0;
+                currentUtterance.pitch = 1.0;
+
+                currentUtterance.onend = function() {
+                    isPlaying = false;
+                    document.getElementById('audioText').innerText = i18n[lang].audioText;
+                };
+
+                window.speechSynthesis.speak(currentUtterance);
+                isPlaying = true;
+                document.getElementById('audioText').innerText = i18n[lang].stopText;
+            } else {
+                alert("Sorry, your browser doesn't support text-to-speech!");
+            }
         }
     </script>
 </body>

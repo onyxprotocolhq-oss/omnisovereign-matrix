@@ -1,10 +1,10 @@
 /* =========================================
-   OMNISOVEREIGN NEURAL AUDIO MATRIX - STYLES
+   OMNISOVEREIGN NEURAL COPY MATRIX - STYLES
    ========================================= */
 
 :root {
     --bg-deep: #050508;
-    --bg-card: rgba(15, 20, 28, 0.65);
+    --bg-card: rgba(15, 20, 28, 0.7);
     --gold-primary: #f39c12;
     --gold-light: #fef3c7;
     --border-glow: rgba(243, 156, 18, 0.25);
@@ -26,43 +26,50 @@ body {
     min-height: 100vh;
     overflow-x: hidden;
     position: relative;
+    line-height: 1.5;
 }
 
-/* 🌌 Cosmic & Neural Background Field */
+/* 🌌 Cosmic Background Field */
 .cosmic-backdrop {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
     z-index: -1;
     overflow: hidden;
-    background: radial-gradient(circle at 50% 10%, #0a1118 0%, #050508 80%);
+    background: radial-gradient(circle at 50% 0%, #0a1118 0%, #050508 80%);
 }
 
 .orb {
     position: absolute;
     border-radius: 50%;
-    filter: blur(140px);
+    filter: blur(150px);
     opacity: 0.15;
+    animation: float 10s infinite alternate ease-in-out;
 }
 
-.orb-1 { width: 550px; height: 550px; background: var(--gold-primary); top: -150px; left: -100px; }
-.orb-2 { width: 650px; height: 650px; background: #2980b9; bottom: -200px; right: -150px; }
+.orb-1 { width: 500px; height: 500px; background: var(--gold-primary); top: -100px; left: -100px; }
+.orb-2 { width: 600px; height: 600px; background: #2980b9; bottom: -150px; right: -100px; }
+
+@keyframes float {
+    0% { transform: translateY(0) scale(1); }
+    100% { transform: translateY(30px) scale(1.05); }
+}
 
 .grid-overlay {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
     background-image: linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
                       linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
-    background-size: 50px 50px;
+    background-size: 40px 40px;
 }
 
-/* 🏗️ Main Layout Container */
+/* 🏗️ Main Layout */
 .sovereign-container {
-    max-width: 1300px;
+    max-width: 1100px;
     margin: 0 auto;
     padding: 30px 20px;
 }
 
-/* 🔝 Premium Header & Navigation */
+/* 🔝 Premium Header */
 .sovereign-header {
     display: flex;
     justify-content: space-between;
@@ -70,10 +77,10 @@ body {
     background: var(--bg-card);
     backdrop-filter: blur(25px);
     border: 1px solid var(--border-glow);
-    padding: 20px 35px;
+    padding: 20px 30px;
     border-radius: 20px;
-    margin-bottom: 40px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+    margin-bottom: 50px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5);
 }
 
 .brand-logo {
@@ -83,7 +90,7 @@ body {
 }
 
 .pulse-ring {
-    width: 12px; height: 12px;
+    width: 14px; height: 14px;
     background: var(--gold-primary);
     border-radius: 50%;
     box-shadow: 0 0 0 0 rgba(243, 156, 18, 0.8);
@@ -91,15 +98,13 @@ body {
 }
 
 @keyframes pulse {
-    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(243, 156, 18, 0.8); }
-    70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(243, 156, 18, 0); }
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(243, 156, 18, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 12px rgba(243, 156, 18, 0); }
     100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(243, 156, 18, 0); }
 }
 
 .brand-logo h1 {
-    font-size: 22px;
     font-weight: 900;
-    letter-spacing: 1.5px;
     background: linear-gradient(135deg, #ffffff, var(--gold-light));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -111,7 +116,7 @@ body {
     color: var(--gold-primary);
     letter-spacing: 3px;
     font-weight: 700;
-    margin-top: 3px;
+    margin-top: 2px;
 }
 
 .global-controls {
@@ -137,203 +142,110 @@ body {
     border-color: var(--gold-primary);
 }
 
-.streak-badge {
-    background: rgba(243, 156, 18, 0.1);
-    border: 1px solid var(--gold-primary);
-    color: var(--gold-light);
-    padding: 10px 18px;
-    border-radius: 12px;
+/* 🚨 Brain-Hacking UI Elements */
+.live-counter {
+    background: rgba(231, 76, 60, 0.1);
+    border: 1px solid #e74c3c;
+    color: #ff7675;
+    padding: 8px 16px;
+    border-radius: 20px;
     font-size: 13px;
-    font-weight: 700;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: pulse-red 2.5s infinite;
 }
 
-/* 🚀 Hero Banner (Competitor Hijacking) */
-.hero-progress-banner {
-    background: var(--bg-card);
-    backdrop-filter: blur(30px);
+@keyframes pulse-red {
+    0% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(231, 76, 60, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0); }
+}
+
+.premium-glow-box {
+    background: linear-gradient(145deg, rgba(20, 24, 32, 0.8), rgba(5, 5, 8, 0.95));
     border: 1px solid var(--border-glow);
-    border-radius: 30px;
-    padding: 60px;
+    box-shadow: 0 0 50px rgba(243, 156, 18, 0.1);
+    border-radius: 24px;
+    padding: 50px 30px;
     position: relative;
     overflow: hidden;
-    margin-bottom: 50px;
-    box-shadow: 0 25px 60px rgba(0,0,0,0.7);
 }
 
 .banner-glow {
     position: absolute;
-    top: -40%; right: -10%;
-    width: 450px; height: 450px;
+    width: 500px; height: 500px;
     background: rgba(243, 156, 18, 0.08);
     border-radius: 50%;
-    filter: blur(90px);
+    filter: blur(100px);
 }
 
-.badge-live {
+.urgency-tag {
     background: linear-gradient(135deg, var(--accent-red), #900000);
     color: #fff;
-    padding: 8px 16px;
-    border-radius: 30px;
-    font-size: 12px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    display: inline-block;
-    margin-bottom: 20px;
-    box-shadow: 0 0 15px rgba(231, 76, 60, 0.4);
-}
-
-.hero-progress-banner h2 {
-    font-size: 38px;
-    font-weight: 900;
-    line-height: 1.25;
-    margin-bottom: 20px;
-    color: #fff;
-    max-width: 900px;
-}
-
-.hero-progress-banner p {
-    font-size: 16px;
-    color: var(--text-muted);
-    line-height: 1.7;
-    max-width: 800px;
-    font-weight: 400;
-}
-
-/* 🛠️ God-Level Tools Grid */
-.tools-empire-section {
-    margin-top: 60px;
-}
-
-.section-title-wrapper {
-    margin-bottom: 35px;
-}
-
-.section-title-wrapper h2 {
-    font-size: 26px;
-    font-weight: 800;
-    color: #fff;
-    margin-bottom: 10px;
-}
-
-.section-title-wrapper p {
-    font-size: 15px;
-    color: var(--text-muted);
-}
-
-.tools-grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 30px;
-}
-
-.tool-card {
-    background: linear-gradient(180deg, var(--bg-card) 0%, rgba(5,5,8,0.8) 100%);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255,255,255,0.05);
-    border-top: 1px solid var(--border-glow);
-    border-radius: 24px;
-    padding: 35px;
-    position: relative;
-    cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-}
-
-.tool-card:hover {
-    transform: translateY(-8px);
-    border-color: var(--gold-primary);
-    box-shadow: 0 20px 50px rgba(243, 156, 18, 0.25);
-}
-
-.tool-status-tag {
-    position: absolute;
-    top: 25px; right: 25px;
-    background: rgba(243, 156, 18, 0.1);
-    border: 1px solid rgba(243, 156, 18, 0.3);
-    color: var(--gold-light);
     padding: 6px 14px;
-    border-radius: 20px;
+    border-radius: 30px;
     font-size: 11px;
     font-weight: 800;
     text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-block;
+    box-shadow: 0 0 15px rgba(231, 76, 60, 0.4);
 }
 
-.tool-icon {
-    font-size: 42px;
-    margin-bottom: 25px;
-    filter: drop-shadow(0 0 10px rgba(243,156,18,0.3));
-}
-
-.tool-card h4 {
-    font-size: 20px;
-    font-weight: 800;
-    color: #fff;
-    margin-bottom: 12px;
-}
-
-.tool-card p {
-    font-size: 14px;
-    color: var(--text-muted);
-    line-height: 1.6;
-}
-
-/* 🔒 Commercial Secure Checkout Modal */
-.modal-overlay {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(2, 2, 5, 0.9);
-    backdrop-filter: blur(20px);
-    z-index: 1000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-}
-
-.modal-content {
-    background: #0a0e14;
-    border: 1px solid var(--gold-primary);
-    width: 100%;
-    max-width: 550px;
-    border-radius: 24px;
-    padding: 35px;
-    box-shadow: 0 0 60px rgba(243, 156, 18, 0.35);
-    position: relative;
-}
-
-.modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid rgba(243, 156, 18, 0.15);
-    padding-bottom: 15px;
-    margin-bottom: 20px;
-}
-
-.modal-header h3 {
-    color: #fff;
-    font-size: 20px;
-    font-weight: 800;
-}
-
-.close-btn {
-    background: none;
-    border: none;
-    color: var(--text-muted);
-    font-size: 32px;
-    line-height: 1;
-    cursor: pointer;
+/* 💻 The Application Workspace */
+textarea {
     transition: 0.3s;
+    font-family: 'Inter', sans-serif;
+}
+textarea:focus {
+    border-color: var(--gold-primary) !important;
+    box-shadow: 0 0 15px rgba(243, 156, 18, 0.2);
 }
 
-.close-btn:hover {
-    color: var(--accent-red);
+input[type="radio"] {
+    accent-color: var(--gold-primary);
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+}
+
+/* 🔒 Paywall Modal */
+.modal-content {
+    animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Hover Effects on Blog Cards */
+#seoBlogContainer > div:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(243, 156, 18, 0.15);
 }
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
-    .sovereign-header { flex-direction: column; gap: 20px; align-items: flex-start; }
-    .hero-progress-banner h2 { font-size: 28px; }
-    .hero-progress-banner { padding: 30px; }
+    .sovereign-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+    .global-controls {
+        width: 100%;
+        justify-content: space-between;
+    }
+    #heroHeading {
+        font-size: 32px !important;
+    }
+    .app-workspace {
+        padding: 25px !important;
+    }
 }
