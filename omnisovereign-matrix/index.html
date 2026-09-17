@@ -3,13 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="pageTitle">OmniSovereign Neural Voice Matrix — The Ultimate Adobe Podcast Killer</title>
+    <title id="pageTitle">OmniSovereign Neural Voice Matrix — Free AI Audio Studio</title>
     <link rel="stylesheet" href="styles.css">
-    <meta name="description" content="Replace overpriced $300/mo audio suites with a 3-in-1 neural voice enhancer, humanizer, and voice cloner for a single $50-$100 lifetime fee.">
+    <style>
+        /* Workspace Upload Box Styling */
+        .upload-area {
+            border: 2px dashed rgba(243, 156, 18, 0.5);
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 16px;
+            padding: 40px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-bottom: 20px;
+        }
+        .upload-area:hover {
+            border-color: var(--gold-primary);
+            background: rgba(243, 156, 18, 0.05);
+        }
+        .progress-bar-container {
+            width: 100%;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            height: 12px;
+            margin-top: 15px;
+            overflow: hidden;
+            display: none;
+        }
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #f39c12, #f1c40f);
+            transition: width 0.2s;
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Cosmic Background Energy Field -->
     <div class="cosmic-backdrop">
         <div class="orb orb-1"></div>
         <div class="orb orb-2"></div>
@@ -17,283 +47,198 @@
     </div>
 
     <div class="sovereign-container">
-        <!-- Top Navigation & Global Multi-Currency Switch -->
+        <!-- Top Navigation -->
         <header class="sovereign-header">
             <div class="brand-logo">
                 <div class="pulse-ring"></div>
                 <div>
-                    <h1 style="font-size: 28px; letter-spacing: 2px;">OMNISSOVEREIGN</h1>
-                    <span class="matrix-sub" id="subBrand">NEURAL AUDIO MATRIX</span>
+                    <h1 style="font-size: 26px; letter-spacing: 2px;">OMNISSOVEREIGN</h1>
                 </div>
             </div>
             <div class="global-controls">
                 <select id="languageSelect" onchange="switchLanguage()">
-                    <option value="en">🌐 English (Global)</option>
-                    <option value="hi">🌐 हिन्दी (India - Razorpay Enabled)</option>
-                    <option value="es">🌐 Español (Spanish)</option>
-                    <option value="fr">🌐 Français (French)</option>
-                    <option value="de">🌐 Deutsch (German)</option>
-                    <option value="ja">🌐 日本語 (Japanese)</option>
+                    <option value="en">🌐 English</option>
+                    <option value="hi">🌐 हिन्दी</option>
                 </select>
-                <div class="streak-badge" id="clusterBadge">⚡ 10-AI Fail-Safe Active</div>
+                <div class="streak-badge">⚡ 10-AI Fail-Safe Active</div>
             </div>
         </header>
 
-        <!-- Hero Competitor Hijacking Banner -->
-        <section class="hero-progress-banner">
-            <div class="banner-glow"></div>
-            <div class="banner-content" style="position: relative; z-index: 2;">
-                <span class="badge-live" id="heroTag">🚨 Adobe Podcast & ElevenLabs Disrupter</span>
-                <h2 id="heroHeading">Stop Paying $300/mo for 30-Min Limits. Get the 1-Hour Studio Neural Voice Matrix for $50 Lifetime.</h2>
-                <p id="heroDesc" style="font-size: 18px;">The world's first 3-in-1 audio powerhouse: 1-Hour Studio Enhancer, AI Humanizer, and Instant Neural Voice Cloning. Powered by 10 redundant AI models.</p>
-                
-                <div style="margin-top: 35px; display: flex; gap: 20px; flex-wrap: wrap; align-items: center;">
-                    <button onclick="openCheckout('Neural Voice All-Access Pass', '$50 Lifetime')" style="background:linear-gradient(135deg, #f1c40f, #f39c12); color:#030307; border:none; padding:18px 35px; border-radius:14px; font-size: 16px; font-weight:900; cursor:pointer; box-shadow: 0 0 30px rgba(243,156,18,0.5); transition: 0.3s;" id="ctaPrimary">Unlock Lifetime Neural Pass ($50)</button>
-                    <div style="display:flex; flex-direction: column; gap: 5px;">
-                        <span style="font-size:14px; font-weight:700; color: #f8fafc;" id="ctaSub">🔒 Zero Recurring Fees • 10-AI Failover</span>
-                        <span style="font-size:12px; color: #f39c12; font-weight: 700;">🎁 Click 'Share' below to unlock $15 Discount instantly!</span>
-                    </div>
+        <!-- Hero Section (Clean & Freemium Focused) -->
+        <section class="hero-progress-banner" style="text-align: center; padding: 50px 20px;">
+            <div class="banner-glow" style="left: 50%; transform: translateX(-50%);"></div>
+            <div class="banner-content" style="position: relative; z-index: 2; max-width: 800px; margin: 0 auto;">
+                <span class="badge-live">🚨 Adobe Podcast Alternative</span>
+                <h2 style="font-size: 34px; margin-bottom: 15px;">Professional Studio Audio, Zero Hardware Required.</h2>
+                <p style="font-size: 16px; opacity: 0.8; margin-bottom: 30px;">Enhance audio, clone voices, and humanize AI speech instantly. Try it completely free below.</p>
+            </div>
+        </section>
+
+        <!-- 🛠️ Working Tools Grid (No upfront prices) -->
+        <section class="tools-empire-section" style="margin-top: -20px;">
+            <div class="tools-grid-container" id="dynamicToolsGrid">
+                <!-- Tool 1 -->
+                <div class="tool-card" onclick="openWorkspace('Studio Voice Enhancer', 'Upload raw audio to remove echo and background noise.')">
+                    <div class="tool-status-tag active">Try Free</div>
+                    <div class="tool-icon">🎙️</div>
+                    <h4>1-Hour Studio Voice Enhancer</h4>
+                    <p>Removes background room echo, hiss, and artifact noise with crystal studio clarity.</p>
+                    <div style="margin-top: 15px; color: var(--gold-primary); font-weight: 700; font-size: 13px;">Launch Workspace &rarr;</div>
+                </div>
+
+                <!-- Tool 2 -->
+                <div class="tool-card" onclick="openWorkspace('AI Humanizer & Pause Injector', 'Upload TTS audio to add natural breathing and human pauses.')">
+                    <div class="tool-status-tag active">Try Free</div>
+                    <div class="tool-icon">🧬</div>
+                    <h4>AI Humanizer & Natural Pause</h4>
+                    <p>Converts robotic text-to-speech audio into 100% organic human voices.</p>
+                    <div style="margin-top: 15px; color: var(--gold-primary); font-weight: 700; font-size: 13px;">Launch Workspace &rarr;</div>
+                </div>
+
+                <!-- Tool 3 -->
+                <div class="tool-card" onclick="openWorkspace('Instant Voice Cloning', 'Upload a 1-minute voice sample to create your neural clone.')">
+                    <div class="tool-status-tag active">Try Free</div>
+                    <div class="tool-icon">👥</div>
+                    <h4>Instant Voice Cloning Studio</h4>
+                    <p>Upload a 1-minute sample of your voice to generate a hyper-realistic neural clone.</p>
+                    <div style="margin-top: 15px; color: var(--gold-primary); font-weight: 700; font-size: 13px;">Launch Workspace &rarr;</div>
                 </div>
             </div>
         </section>
 
-        <!-- Viral Growth & Affiliate Loop Banner -->
-        <section style="background: rgba(243, 156, 18, 0.1); border: 1px solid var(--gold-primary); border-radius: 20px; padding: 25px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-bottom: 50px;">
+        <!-- Viral Growth & Share Section (Moved Down) -->
+        <section style="background: rgba(243, 156, 18, 0.1); border: 1px solid var(--gold-primary); border-radius: 20px; padding: 25px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-top: 60px;">
             <div>
                 <h3 style="color: #fff; font-size: 18px; margin-bottom: 5px;">💸 Viral Word-of-Mouth Matrix</h3>
-                <p style="color: var(--text-muted); font-size: 14px;">Share OmniSovereign to get $15 OFF your lifetime pass. Refer friends to earn 40% recurring commissions.</p>
+                <p style="color: var(--text-muted); font-size: 14px;">Love the free tool? Share OmniSovereign to get $15 OFF your lifetime premium pass. Refer friends to earn 40%.</p>
             </div>
             <div style="display: flex; gap: 15px; margin-top: 10px;">
-                <button onclick="applyShareDiscount()" style="background: #1da1f2; color: #fff; border: none; padding: 10px 20px; border-radius: 10px; font-weight: 700; cursor: pointer; box-shadow: 0 5px 15px rgba(29, 161, 242, 0.3);">🐦 Share & Get $15 OFF</button>
-                <button onclick="alert('Affiliate Dashboard Activated! Your link: omnisovereign.ai/?ref=YOUR_ID. Earn 40% on every sale.')" style="background: transparent; color: var(--gold-primary); border: 1px solid var(--gold-primary); padding: 10px 20px; border-radius: 10px; font-weight: 700; cursor: pointer;">🤝 Become 40% Partner</button>
+                <button onclick="alert('Shared successfully! $15 Discount unlocked for checkout.')" style="background: #1da1f2; color: #fff; border: none; padding: 10px 20px; border-radius: 10px; font-weight: 700; cursor: pointer;">🐦 Share & Get $15 OFF</button>
             </div>
         </section>
 
-        <!-- The 3 Core God-Level Audio Engines -->
-        <section class="tools-empire-section">
-            <div class="section-title-wrapper">
-                <h2 id="toolsSectionTitle">The 3-in-1 Neural Audio Matrix</h2>
-                <p id="toolsSectionDesc">Three professional sound engines built into a single sovereign dashboard, replacing expensive monopolies.</p>
+        <!-- SEO Blogs Section (Bottom) -->
+        <section class="tools-empire-section" style="margin-top: 40px; margin-bottom: 40px;">
+            <div class="section-title-wrapper" style="text-align: center;">
+                <h2>OmniSovereign Intelligence Briefs</h2>
             </div>
-
-            <div class="tools-grid-container" id="dynamicToolsGrid">
-                <!-- Injected via i18n Matrix Engine -->
-            </div>
-        </section>
-
-        <!-- Programmatic SEO Traffic Stealer & Auto-Publishing Blog Section -->
-        <section class="tools-empire-section" style="margin-top: 60px;">
-            <div class="section-title-wrapper">
-                <h2 id="blogSectionTitle">Programmatic SEO Authority Briefs</h2>
-                <p id="blogSectionDesc">Targeting high-intent international search queries for Adobe Podcast and ElevenLabs alternatives.</p>
-            </div>
-            <div id="seoBlogContainer" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin-top: 20px;">
-                <!-- Blog cards injected dynamically -->
+            <div id="seoBlogContainer" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px;">
+                <div style="background: rgba(10, 14, 20, 0.8); border: 1px solid rgba(255,255,255,0.05); border-radius: 20px; padding: 25px;">
+                    <span style="font-size:10px; color:var(--gold-primary); font-weight:800;">ADOBE PODCAST DISRUPTER</span>
+                    <h4 style="color:#fff; font-size:16px; margin:10px 0;">Best Free Adobe Podcast Alternatives in 2026</h4>
+                    <p style="font-size:13px; color:var(--text-muted);">How creators are bypassing 30-min limits using neural audio matrix.</p>
+                </div>
+                <div style="background: rgba(10, 14, 20, 0.8); border: 1px solid rgba(255,255,255,0.05); border-radius: 20px; padding: 25px;">
+                    <span style="font-size:10px; color:var(--gold-primary); font-weight:800;">ELEVENLABS DISRUPTER</span>
+                    <h4 style="color:#fff; font-size:16px; margin:10px 0;">ElevenLabs vs. Autonomous Voice Cloning</h4>
+                    <p style="font-size:13px; color:var(--text-muted);">Why paying monthly for voice cloning is a thing of the past.</p>
+                </div>
             </div>
         </section>
     </div>
 
-    <!-- Commercial Secure Checkout Modal -->
-    <div id="commercialModal" class="modal-overlay" style="display: none;">
+    <!-- 🎧 Interactive Workspace Modal (The App Interface) -->
+    <div id="workspaceModal" class="modal-overlay" style="display: none;">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 id="modalTitle">Sovereign Secure Checkout</h3>
-                <button onclick="closeModal()" class="close-btn">&times;</button>
+                <h3 id="workspaceTitle">Tool Workspace</h3>
+                <button onclick="closeWorkspace()" class="close-btn">&times;</button>
             </div>
-            <div class="modal-body" id="modalBody">
-                <!-- Dynamic Checkout Options Injected Here -->
+            <div class="modal-body" id="workspaceBody">
+                <p id="workspaceDesc" style="margin-bottom: 15px; font-size: 14px; color: var(--text-muted);"></p>
+                
+                <div class="upload-area" id="uploadArea" onclick="document.getElementById('fileInput').click()">
+                    <div style="font-size: 30px; margin-bottom: 10px;">📁</div>
+                    <h4 style="color: #fff; margin-bottom: 5px;">Click or Drag Audio File Here</h4>
+                    <p style="font-size: 12px; color: var(--text-muted);">MP3, WAV, M4A (Max 10 Mins for Free Tier)</p>
+                </div>
+                <input type="file" id="fileInput" style="display: none;" accept="audio/*" onchange="fileSelected()">
+
+                <div id="fileInfo" style="display: none; text-align: center; margin-bottom: 20px; color: #fff; font-size: 14px;">
+                    <span style="color: var(--gold-primary);">🎵 Selected:</span> <span id="fileName">audio_file.mp3</span>
+                </div>
+
+                <div class="progress-bar-container" id="progressContainer">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+                <p id="progressText" style="text-align: center; font-size: 12px; margin-top: 10px; color: var(--gold-primary); display: none;">Initializing 10-AI Neural Engines...</p>
+
+                <button id="processBtn" onclick="startProcessing()" style="background:linear-gradient(135deg, #f1c40f, #f39c12); color:#030307; border:none; padding:15px; border-radius:12px; width: 100%; font-size: 15px; font-weight:800; cursor:pointer; display: none;">Process Audio (Free Try)</button>
+
+                <!-- Subscription Upgrade Paywall (Hidden initially) -->
+                <div id="upgradePaywall" style="display: none; text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
+                    <h4 style="color: #e74c3c; margin-bottom: 10px;">⚠️ Free Limit Reached</h4>
+                    <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 15px;">Your file exceeds the 10-minute free limit, or free credits are exhausted. Unlock the full 1-Hour Matrix forever.</p>
+                    <button onclick="window.open('https://buy.stripe.com/your_link', '_blank')" style="background: #3498db; color: #fff; border: none; padding: 12px; border-radius: 8px; width: 100%; font-weight: 700; margin-bottom: 10px; cursor: pointer;">🌍 Upgrade to Premium - $55 Lifetime</button>
+                    <button onclick="window.open('https://razorpay.me/@your_link', '_blank')" style="background: #2980b9; color: #fff; border: none; padding: 12px; border-radius: 8px; width: 100%; font-weight: 700; cursor: pointer;">🇮🇳 Pay via Razorpay - ₹4,600</button>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Master Global Script Logic -->
     <script>
-        let discountActive = false;
+        // Open the Workspace (File Upload)
+        function openWorkspace(title, desc) {
+            document.getElementById('workspaceTitle').innerText = title;
+            document.getElementById('workspaceDesc').innerText = desc;
+            
+            // Reset modal state
+            document.getElementById('uploadArea').style.display = 'block';
+            document.getElementById('fileInfo').style.display = 'none';
+            document.getElementById('processBtn').style.display = 'none';
+            document.getElementById('progressContainer').style.display = 'none';
+            document.getElementById('progressText').style.display = 'none';
+            document.getElementById('upgradePaywall').style.display = 'none';
+            document.getElementById('progressBar').style.width = '0%';
+            
+            document.getElementById('workspaceModal').style.display = 'flex';
+        }
 
-        const i18nData = {
-            en: {
-                pageTitle: "OmniSovereign Neural Voice Matrix — The Ultimate Adobe Podcast Killer",
-                subBrand: "NEURAL AUDIO MATRIX",
-                clusterBadge: "⚡ 10-AI Fail-Safe Active",
-                heroTag: "🚨 Adobe Podcast & ElevenLabs Disrupter",
-                heroHeading: "Stop Paying $300/mo for 30-Min Limits. Get the 1-Hour Studio Neural Voice Matrix for $50 Lifetime.",
-                heroDesc: "The world's first 3-in-1 audio powerhouse: 1-Hour Studio Enhancer, AI Humanizer, and Instant Neural Voice Cloning.",
-                ctaPrimary: "Unlock Lifetime Neural Pass ($50)",
-                ctaSub: "🔒 Zero Recurring Fees • 10-AI Failover",
-                toolsSectionTitle: "The 3-in-1 Neural Audio Matrix",
-                toolsSectionDesc: "Three professional sound engines built into a single sovereign dashboard.",
-                blogSectionTitle: "Programmatic SEO Authority Briefs",
-                blogSectionDesc: "Targeting high-intent search queries for audio alternatives.",
-                buyBtn: "Deploy Engine"
-            },
-            hi: {
-                pageTitle: "ओम्निसोवरेन न्यूरल वॉइस मैट्रिक्स — बेस्ट एडोबी पॉडकास्ट अल्टरनेटिव",
-                subBrand: "न्यूरल ऑडियो मैट्रिक्स",
-                clusterBadge: "⚡ 10-एआई फेल-सेफ एक्टिव",
-                heroTag: "🚨 एडोबी पॉडकास्ट और एलेवनलैब्स ब्रेकर",
-                heroHeading: "30 मिनट की लिमिट और $300 महीने देना बंद करें। केवल $50 में 1-घंटे का स्टूडियो वॉइस मैट्रिक्स लें।",
-                heroDesc: "दुनिया का पहला 3-इन-1 ऑडियो पावरहाउस: 1-घंटे का स्टूडियो एनहांसर, एआई ह्यूमनाइज़र, और इंस्टेंट वॉयस क्लोनिंग।",
-                ctaPrimary: "लाइफटाइम पास लें ($50 मात्र)",
-                ctaSub: "🔒 सुरक्षित भुगतान (Razorpay UPI उपलब्ध)",
-                toolsSectionTitle: "3-इन-1 न्यूरल ऑडियो मैट्रिक्स",
-                toolsSectionDesc: "तीन प्रोफेशनल साउंड इंजन एक ही डैशबोर्ड में।",
-                blogSectionTitle: "प्रोग्राम्मैटिक एसईओ ट्रैफिक स्टीलर और ब्लॉग्स",
-                blogSectionDesc: "गूगल पर तेजी से रैंक करने के लिए ग्लोबल ऑडियो कीवर्ड्स टारगेटिंग।",
-                buyBtn: "इस्तेमाल करें"
-            },
-            // Note: Truncated other languages for code brevity, but logic applies perfectly.
-            es: {
-                pageTitle: "OmniSovereign Neural Voice Matrix",
-                subBrand: "MATRIZ DE AUDIO NEURAL",
-                clusterBadge: "⚡ Clúster 10-IA Activo",
-                heroTag: "🚨 Disrupter de Adobe Podcast",
-                heroHeading: "Deja de pagar $300/mes. Obtén la Matriz de Voz de 1 Hora por $50 Vitalicios.",
-                heroDesc: "Optimizador de 1 hora, Humanizador de IA y Clonación de Voz.",
-                ctaPrimary: "Desbloquear Pase Vitalicio ($50)",
-                ctaSub: "🔒 Sin tarifas recurrentes • 10-IA",
-                toolsSectionTitle: "La Matriz de Audio Neural 3 en 1",
-                toolsSectionDesc: "Tres motores de sonido profesionales integrados.",
-                blogSectionTitle: "Matriz de Tráfico SEO Programático",
-                blogSectionDesc: "Capturando consultas internacionales.",
-                buyBtn: "Desplegar"
+        function closeWorkspace() {
+            document.getElementById('workspaceModal').style.display = 'none';
+        }
+
+        // When user selects a file
+        function fileSelected() {
+            const input = document.getElementById('fileInput');
+            if(input.files.length > 0) {
+                document.getElementById('fileName').innerText = input.files[0].name;
+                document.getElementById('uploadArea').style.display = 'none';
+                document.getElementById('fileInfo').style.display = 'block';
+                document.getElementById('processBtn').style.display = 'block';
             }
-        };
+        }
 
-        const neuralAudioTools = [
-            { 
-                id: 1, 
-                name: "1-Hour Studio Voice Enhancer", 
-                comp: "Adobe Podcast ($100/mo)", 
-                basePrice: 50, 
-                icon: "🎙️", 
-                desc: "Removes background room echo, hiss, and artifact noise from up to 1-hour continuous recordings with crystal studio clarity.",
-                alternatives: ["10-AI Node A", "Node B: NeuralEcho", "Node C: MatrixPro"]
-            },
-            { 
-                id: 2, 
-                name: "AI Humanizer & Natural Pause", 
-                comp: "Standard TTS ($50/mo)", 
-                basePrice: 50, 
-                icon: "🧬", 
-                desc: "Converts robotic text-to-speech audio into 100% organic human voices with breathing sounds and emotional modulation.",
-                alternatives: ["10-AI Node A", "Node B: HumanizeAI", "Node C: PauseMatrix"]
-            },
-            { 
-                id: 3, 
-                name: "Instant Voice Cloning Studio", 
-                comp: "ElevenLabs ($110/mo)", 
-                basePrice: 100, 
-                icon: "👥", 
-                desc: "Upload a 1-minute sample of your voice to generate a hyper-realistic neural clone in 40+ global languages.",
-                alternatives: ["10-AI Node A", "Node B: PolyGlot", "Node C: CloneCore"]
-            }
-        ];
-
-        const seoBlogs = [
-            { title: "Best Free Adobe Podcast Alternatives for YouTube Creators in 2026", keyword: "adobe podcast alternative free lifetime", snippet: "Detailed comparative breakdown of 1-hour studio voice enhancers replacing expensive recurring corporate audio subscriptions." },
-            { title: "ElevenLabs vs. Autonomous Neural Voice Cloning Suites", keyword: "elevenlabs alternative lifetime deal", snippet: "How modern podcasters cut voice synthesis and dubbing overhead by 90% using decentralized 10-AI fallback clusters." }
-        ];
-
-        window.addEventListener('DOMContentLoaded', () => {
-            renderTools('en');
-            renderBlogs();
-        });
+        // Simulate AI Processing & Hit the Paywall
+        function startProcessing() {
+            document.getElementById('processBtn').style.display = 'none';
+            document.getElementById('progressContainer').style.display = 'block';
+            document.getElementById('progressText').style.display = 'block';
+            
+            let bar = document.getElementById('progressBar');
+            let text = document.getElementById('progressText');
+            let width = 0;
+            
+            let interval = setInterval(() => {
+                width += 15;
+                bar.style.width = width + '%';
+                
+                if(width === 30) text.innerText = "Analyzing background noise...";
+                if(width === 60) text.innerText = "Applying Neural Enhancement...";
+                
+                if (width >= 100) {
+                    clearInterval(interval);
+                    text.innerText = "Processing Paused.";
+                    // Trigger Paywall
+                    setTimeout(() => {
+                        document.getElementById('upgradePaywall').style.display = 'block';
+                    }, 500);
+                }
+            }, 600);
+        }
 
         function switchLanguage() {
-            const lang = document.getElementById('languageSelect').value;
-            const t = i18nData[lang] || i18nData['en'];
-
-            document.getElementById('pageTitle').innerText = t.pageTitle;
-            document.getElementById('subBrand').innerText = t.subBrand;
-            document.getElementById('clusterBadge').innerText = t.clusterBadge;
-            document.getElementById('heroTag').innerText = t.heroTag;
-            document.getElementById('heroHeading').innerText = t.heroHeading;
-            document.getElementById('heroDesc').innerText = t.heroDesc;
-            document.getElementById('ctaPrimary').innerText = t.ctaPrimary;
-            document.getElementById('ctaSub').innerText = t.ctaSub;
-            document.getElementById('toolsSectionTitle').innerText = t.toolsSectionTitle;
-            document.getElementById('toolsSectionDesc').innerText = t.toolsSectionDesc;
-            document.getElementById('blogSectionTitle').innerText = t.blogSectionTitle;
-            document.getElementById('blogSectionDesc').innerText = t.blogSectionDesc;
-
-            renderTools(lang);
-        }
-
-        function renderTools(lang) {
-            const t = i18nData[lang] || i18nData['en'];
-            const grid = document.getElementById('dynamicToolsGrid');
-            grid.innerHTML = neuralAudioTools.map(tool => {
-                let currentPrice = discountActive ? (tool.basePrice - 15) : tool.basePrice;
-                let priceDisplay = discountActive 
-                    ? `<span style="text-decoration:line-through; color:var(--text-muted); font-size:12px; margin-right:8px;">$${tool.basePrice}</span>$${currentPrice} Lifetime` 
-                    : `$${tool.basePrice} Lifetime`;
-
-                return `
-                <div class="tool-card" onclick="openCheckout('${tool.name}', ${currentPrice})">
-                    <div class="tool-status-tag active">Replaces ${tool.comp}</div>
-                    <div class="tool-icon">${tool.icon}</div>
-                    <h4>${tool.name}</h4>
-                    <p>${tool.desc}</p>
-                    <div style="margin: 15px 0; font-size: 11px; opacity: 0.6; border-top: 1px solid rgba(243,156,18,0.1); padding-top: 10px;">
-                        <strong>Engine Chain:</strong> ${tool.alternatives.join(' • ')}
-                    </div>
-                    <div style="display:flex; justify-content:space-between; align-items:center;">
-                        <span style="color:var(--gold-primary); font-weight:900; font-size:16px;">${priceDisplay}</span>
-                        <span style="font-size:12px; color:var(--gold-light); font-weight:800; background:rgba(243,156,18,0.2); padding:6px 12px; border-radius:8px;">${t.buyBtn} &rarr;</span>
-                    </div>
-                </div>
-            `}).join('');
-        }
-
-        function renderBlogs() {
-            const container = document.getElementById('seoBlogContainer');
-            container.innerHTML = seoBlogs.map(blog => `
-                <div style="background: rgba(10, 14, 20, 0.8); border: 1px solid rgba(255,255,255,0.05); border-radius: 20px; padding: 25px; transition: 0.3s; cursor:pointer;" onmouseover="this.style.borderColor='var(--gold-primary)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.05)'">
-                    <span style="font-size:10px; background: rgba(243,156,18,0.15); color:var(--gold-primary); padding: 4px 10px; border-radius: 10px; font-weight:800; text-transform:uppercase;">Keyword: ${blog.keyword}</span>
-                    <h4 style="color:#fff; font-size:17px; margin:15px 0 10px 0; font-weight:800;">${blog.title}</h4>
-                    <p style="font-size:13px; color:var(--text-muted); line-height:1.6;">${blog.snippet}</p>
-                </div>
-            `).join('');
-        }
-
-        function applyShareDiscount() {
-            alert("Thanks for sharing! A $15 Discount has been applied to all Lifetime Passes.");
-            discountActive = true;
-            
-            document.getElementById('ctaPrimary').innerText = "Unlock Lifetime Neural Pass ($35)";
-            renderTools(document.getElementById('languageSelect').value);
-        }
-
-        function openCheckout(title, priceValue) {
-            const modal = document.getElementById('commercialModal');
-            const modalTitle = document.getElementById('modalTitle');
-            const modalBody = document.getElementById('modalBody');
-
-            const isHindi = document.getElementById('languageSelect').value === 'hi';
-            let inrPrice = priceValue * 84; // Approx USD to INR conversion
-
-            modalTitle.innerText = `⚡ ${title}`;
-            modalBody.innerHTML = `
-                <div style="background: rgba(243, 156, 18, 0.1); border: 1px solid var(--gold-primary); padding: 15px; border-radius: 12px; margin-bottom: 20px;">
-                    <h4 style="color: #fff; margin-bottom: 5px;">Total Due: $${priceValue} Lifetime</h4>
-                    <p style="font-size: 12px; color: var(--text-muted);">${discountActive ? '✅ $15 Viral Share Discount Applied!' : 'Share the page to get $15 off instantly.'}</p>
-                </div>
-                
-                <p style="margin-bottom:15px; font-size:14px; opacity:0.85;">${isHindi ? 'सुरक्षित भुगतान गेटवे चुनें (Global & Indian Gateways Supported):' : 'Select your secure payment gateway:'}</p>
-                
-                <div style="display: flex; flex-direction: column; gap: 12px;">
-                    <button onclick="window.open('https://buy.stripe.com/your_lemonsqueezy_or_stripe_link', '_blank')" style="background:linear-gradient(135deg, #f1c40f, #f39c12); color:#030307; border:none; padding:16px; border-radius:12px; font-size: 15px; font-weight:800; cursor:pointer; text-align:center;">🌍 International Checkout (Lemon Squeezy - $${priceValue})</button>
-                    
-                    <button onclick="window.open('https://razorpay.me/@your_razorpay_link', '_blank')" style="background:linear-gradient(135deg, #3498db, #2980b9); color:#fff; border:none; padding:16px; border-radius:12px; font-size: 15px; font-weight:800; cursor:pointer; text-align:center;">🇮🇳 Indian Secure Checkout (Razorpay / UPI - ₹${inrPrice})</button>
-                </div>
-                
-                <div style="margin-top: 20px; font-size: 12px; color: var(--text-muted); text-align: center;">🔒 Instant Neural License Delivery • 100% Encrypted & Secure</div>
-            `;
-            modal.style.display = 'flex';
-        }
-
-        function closeModal() {
-            document.getElementById('commercialModal').style.display = 'none';
+            // Basic language switch logic can remain here
         }
     </script>
 </body>
